@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 	function clean($str) {
@@ -8,15 +8,15 @@ session_start();
 		}
 		return mysql_real_escape_string($str);
 	}
-	$fName = clean($_POST['fname']);
-	$lName = clean($_POST['lname']);
-	$sTatus = clean($_POST['status']);
-	$eMail = clean($_POST['account_email']);
-	$pAssword = clean($_POST['account_password']);
-	$bDay = clean($_POST['bday']);
-	$gEnder = clean($_POST['gender']);
-	$aDdress = clean($_POST['address']);
-	$cOntact = clean($_POST['contact']);
+	$fName = $_POST['fname'];
+	$lName = $_POST['lname'];
+	$sTatus = $_POST['status'];
+	$eMail =$_POST['account_email'];
+	$pAssword = $_POST['account_password'];
+	$bDay = $_POST['bday'];
+	$gEnder =$_POST['gender'];
+	$aDdress = $_POST['address'];
+	$cOntact = $_POST['contact'];
 	$errors = '';
 
 	$connect = mysqli_connect("localhost","root","","blood_bank");
@@ -37,10 +37,10 @@ session_start();
 		$errors .= "<li color:'red'><font color='red'><b>Last Name ".$lName." already exist!</b></font></li>";
 	}
 	if($bDay == date('Y-m-d')){
-		$errors .= "<li color:'red'><font color='red'><b>You cannot have today's date as your birthday</b></font></li>";		
+		$errors .= "<li color:'red'><font color='red'><b>You cannot have today's date as your birthday</b></font></li>";
 	}
 	if($bDay > date('Y-m-d')){
-		$errors .= "<li color:'red'><font color='red'><b>".$bDay." has not been pass yet!</b></font></li>";	
+		$errors .= "<li color:'red'><font color='red'><b>".$bDay." has not been pass yet!</b></font></li>";
 	}
 	if(strlen($cOntact) != 11){
 		$errors .= "<li color:'red'><font color='red'><b>The Contact Number has to be 11 numbers! - ".$cOntact."</b></font></li>";

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 	function clean($str) {
@@ -8,6 +8,7 @@ session_start();
 		}
 		return mysql_real_escape_string($str);
 	}
+
 	$age = '';
 	$bday = $_POST['bday'];
 	$birthday = explode('-', $bday);
@@ -15,13 +16,13 @@ session_start();
 		$age = date('Y')-$birthday[0];
 	}
 	else{
-		$age = (date('Y')-$birthday[0])-1;	
+		$age = (date('Y')-$birthday[0])-1;
 	}
-	$callNumber = clean($_POST['call_number']);
-	$dOnor = clean($_POST['donor']);
-	$bloodType = clean($_POST['blood_type']);
-	$place_of_acq = clean($_POST['place']);
-	$nUrse = clean($_POST['nurse_staff']);
+	$callNumber = $_POST['call_number'];
+	$dOnor = $_POST['donor'];
+	$bloodType = $_POST['blood_type'];
+	$place_of_acq = $_POST['place'];
+	$nUrse = $_POST['nurse_staff'];
 	$remarks = '0';
 	$Date = date('Y-m-d');
 	$expiration_date = date('Y-m-d' , strtotime($Date. ' + 89 days'));
